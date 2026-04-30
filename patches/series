@@ -1,5 +1,5 @@
 general/remove-telemetry.patch
 general/app-options.patch
 general/use-browser-printing.patch
-ui/fix-ui-nits.patch
 ui/helium-colors.patch
+ui/fix-ui-nits.patch
