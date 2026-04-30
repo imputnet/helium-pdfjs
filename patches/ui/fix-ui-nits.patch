@@ -236,6 +236,15 @@
        background-color: var(--resizer-hover-bg-color);
 --- a/web/views_manager.css
 +++ b/web/views_manager.css
+@@ -89,7 +89,7 @@
+     0 2px 6px -6px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+   --header-bg: light-dark(rgb(255 255 255 / 0.92), #42414e);
+   --image-outline: none;
+-  --image-border-width: 6px;
++  --image-border-width: 4px;
+   --image-border-color: light-dark(#cfcfd8, #3a3944);
+   --image-hover-border-color: #bfbfc9;
+   --image-current-border-color: var(--button-focus-outline-color);
 @@ -177,7 +177,6 @@
    }
  
@@ -313,6 +322,22 @@
  
              &::after {
                content: "";
+@@ -588,7 +590,6 @@
+       align-items: center;
+       justify-content: space-evenly;
+       padding: 20px 32px;
+-      gap: 44px;
+       width: 100%;
+       box-sizing: border-box;
+       position: relative;
+@@ -670,6 +671,7 @@
+         height: auto;
+         position: relative;
+         scroll-margin-top: 20px;
++        padding: 12px 0;
+ 
+         .thumbnailPasteButton {
+           padding: 8px 0;
 @@ -678,24 +680,23 @@
  
          &:not(.isDragging) > .thumbnailImageContainer::after {
