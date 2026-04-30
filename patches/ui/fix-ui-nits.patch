@@ -1,0 +1,346 @@
+--- a/web/viewer.css
++++ b/web/viewer.css
+@@ -287,10 +287,6 @@ body {
+   transition-timing-function: var(--sidebar-transition-timing-function);
+ }
+ 
+-#sidebarContainer :is(input, button, select) {
+-  font: message-box;
+-}
+-
+ .toolbar {
+   z-index: 2;
+ }
+@@ -301,7 +297,7 @@ body {
+   background-color: var(--sidebar-toolbar-bg-color);
+   box-shadow: var(--toolbarSidebar-box-shadow);
+   border-bottom: var(--toolbarSidebar-border-bottom);
+-  padding: var(--toolbar-vertical-padding) var(--toolbar-horizontal-padding);
++  padding: var(--toolbar-vertical-padding);
+   justify-content: space-between;
+ 
+   #toolbarSidebarLeft {
+@@ -342,54 +338,14 @@ body {
+   border: var(--doorhanger-border-color-whcm);
+   background-color: var(--doorhanger-bg-color);
+   inset-block-start: calc(100% + var(--doorhanger-height) - 2px);
+-
+-  &::after,
+-  &::before {
+-    bottom: 100%;
+-    border-style: solid;
+-    border-color: transparent;
+-    content: "";
+-    height: 0;
+-    width: 0;
+-    position: absolute;
+-    pointer-events: none;
+-    opacity: var(--doorhanger-triangle-opacity-whcm);
+-  }
+-
+-  &::before {
+-    border-width: calc(var(--doorhanger-height) + 2px);
+-    border-bottom-color: var(--doorhanger-border-color);
+-  }
+-
+-  &::after {
+-    border-width: var(--doorhanger-height);
+-  }
+ }
+ 
+ .doorHangerRight {
+   inset-inline-end: calc(50% - var(--doorhanger-height) - 1px);
+-
+-  &::before {
+-    inset-inline-end: -1px;
+-  }
+-
+-  &::after {
+-    border-bottom-color: var(--doorhanger-bg-color);
+-    inset-inline-end: 1px;
+-  }
+ }
+ 
+ .doorHanger {
+   inset-inline-start: calc(50% - var(--doorhanger-height) - 1px);
+-
+-  &::before {
+-    inset-inline-start: -1px;
+-  }
+-
+-  &::after {
+-    border-bottom-color: var(--toolbar-bg-color);
+-    inset-inline-start: 1px;
+-  }
+ }
+ 
+ .dialogButton {
+@@ -578,6 +534,8 @@ body {
+   background-size: 0 0;
+   transition-property: none;
+ 
++  line-height: 1;
++
+   /*#if !MOZCENTRAL*/
+   &::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+@@ -639,7 +597,6 @@ dialog {
+   padding: 15px;
+   border-spacing: 4px;
+   color: var(--main-color);
+-  font: message-box;
+   font-size: 12px;
+   line-height: 14px;
+   background-color: var(--doorhanger-bg-color);
+@@ -746,13 +703,14 @@ dialog :link {
+   border: none;
+   color: var(--main-color);
+   outline: none;
+-  border-radius: 2px;
++  border-radius: 6px;
+   box-sizing: border-box;
+-  font: message-box;
+   flex: none;
+   position: relative;
+   padding: 0;
+ 
++  font-size: 13px;
++
+   > span {
+     display: inline-block;
+     width: 0;
+@@ -833,6 +791,7 @@ dialog :link {
+       display: inline-block;
+       width: max-content;
+       height: auto;
++      flex: 1;
+     }
+   }
+ }
+@@ -922,7 +881,6 @@ dialog :link {
+         background-color: transparent;
+         width: 90px;
+         flex: 0 1 0;
+-        font: message-box;
+ 
+         &::-moz-range-progress {
+           background-color: black;
+@@ -948,12 +906,14 @@ dialog :link {
+ 
+ #secondaryToolbar {
+   height: auto;
+-  width: 220px;
++  min-width: 200px;
+   position: absolute;
+   z-index: 30000;
+   cursor: default;
+   min-height: 26px;
+   max-height: calc(var(--viewer-container-height) - 40px);
++  padding: 3px;
++  border-radius: 9px;
+ 
+   #secondaryToolbarButtonContainer {
+     /*#if GENERIC*/
+@@ -1267,7 +1227,7 @@ dialog :link {
+   padding: 0;
+   background-color: var(--dropdown-btn-bg-color);
+   border: var(--dropdown-btn-border);
+-  border-radius: 2px;
++  border-radius: 4px;
+   color: var(--main-color);
+   font-size: 12px;
+   line-height: 14px;
+@@ -1284,13 +1244,12 @@ dialog :link {
+     appearance: none;
+     width: inherit;
+     min-width: inherit;
+-    height: 28px;
+-    font: message-box;
++    height: 24px;
+     font-size: 12px;
+     color: var(--main-color);
+     margin: 0;
+-    padding-block: 1px 2px;
+-    padding-inline: 6px 38px;
++    padding-inline: 8px;
++    border-radius: 4px;
+     border: none;
+     outline: none;
+     background-color: var(--dropdown-btn-bg-color);
+@@ -1336,7 +1295,6 @@ dialog :link {
+   padding: var(--toolbar-vertical-padding) var(--toolbar-horizontal-padding);
+   position: relative;
+   box-sizing: border-box;
+-  font: message-box;
+   background-color: var(--toolbar-bg-color);
+   box-shadow: var(--toolbar-box-shadow);
+   border-bottom: var(--toolbar-border-bottom);
+@@ -1350,10 +1308,6 @@ dialog :link {
+       flex: none;
+     }
+ 
+-    input {
+-      font: message-box;
+-    }
+-
+     .toolbarButtonSpacer {
+       width: 30px;
+       display: block;
+@@ -1361,13 +1315,17 @@ dialog :link {
+     }
+ 
+     #toolbarViewerLeft {
+-      margin-inline-start: 8px;
++      margin-inline-start: 6px;
+ 
+       #numPages.toolbarLabel {
+         padding-inline-start: 3px;
+         flex: none;
+       }
+     }
++
++    #toolbarViewerRight {
++      margin-inline-end: 6px;
++    }
+   }
+ 
+   #loadingBar {
+--- a/web/sidebar.css
++++ b/web/sidebar.css
+@@ -41,10 +41,8 @@
+ 
+   border-radius: var(--sidebar-border-radius);
+   box-shadow: var(--sidebar-box-shadow);
+-  border: 1px solid var(--sidebar-border-color);
+   background-color: var(--sidebar-bg-color);
+   inset-block-start: calc(100% + var(--doorhanger-height) - 2px);
+-  padding-block: var(--sidebar-padding);
+   width: var(--sidebar-width);
+   min-width: var(--sidebar-min-width);
+   max-width: var(--sidebar-max-width);
+@@ -64,13 +62,12 @@
+       background-color 0.5s ease-in-out,
+       border-color 0.5s ease-in-out;
+     box-sizing: border-box;
+-    border: 1px solid transparent;
+-    border-block-width: 0;
+     background-clip: content-box;
++    margin: 16px 0;
++    border-radius: 10px;
+ 
+     &:hover {
+       background-color: var(--resizer-hover-bg-color);
+-      border-color: white;
+     }
+     &:focus-visible {
+       background-color: var(--resizer-hover-bg-color);
+--- a/web/views_manager.css
++++ b/web/views_manager.css
+@@ -177,7 +177,6 @@
+   }
+ 
+   display: flex;
+-  padding-bottom: 16px;
+   flex-direction: column;
+   align-items: flex-start;
+   inset-block-start: calc(100% + var(--sidebar-block-padding));
+@@ -194,13 +193,13 @@
+   transition-timing-function: var(--sidebar-transition-timing-function);
+ 
+   .sidebarResizer {
+-    inset-inline-start: calc(100% + 4px);
++    inset-inline-start: calc(100% - 4px);
+   }
+ 
+   .viewsManagerButton {
+     width: auto;
+     color: var(--button-fg);
+-    border-radius: 8px;
++    border-radius: 6px;
+     border: 1px solid var(--button-border-color);
+     background: var(--button-bg);
+ 
+@@ -250,20 +249,23 @@
+     box-shadow: var(--header-shadow);
+     flex: 0 0 auto;
+     background-color: var(--header-bg);
++    border-radius: var(--sidebar-border-radius) var(--sidebar-border-radius) 0 0;
+ 
+     .viewsManagerLabel {
+       flex: 1 1 auto;
+       color: var(--text-color);
+-      text-align: center;
++      text-align: left;
+       height: fit-content;
+       width: fit-content;
+       user-select: none;
+ 
+       font: menu;
+-      font-size: 15px;
++      font-size: 14px;
+       font-style: normal;
+       font-weight: 400;
+       line-height: normal;
++
++      margin: 0 4px;
+     }
+ 
+     #viewsManagerTitle {
+@@ -273,7 +275,7 @@
+       align-self: stretch;
+       justify-content: space-between;
+       width: auto;
+-      padding: 12px 16px 12px 8px;
++      padding: 8px;
+ 
+       &:not(:has(#viewsManagerHeaderLabel ~ button:not([hidden])))::after {
+         /* If one of the following buttons is visible, hide the placeholder
+@@ -397,7 +399,7 @@
+       border: 1px solid var(--status-border-color);
+ 
+       > div {
+-        min-height: 64px;
++        min-height: 32px;
+         width: 100%;
+         padding-inline: 16px;
+         grid-area: 1 / 1;
+@@ -464,7 +466,7 @@
+             gap: 8px;
+             width: 100%;
+             height: 100%;
+-            padding: 4px 16px;
++            padding: 4px 12px;
+ 
+             &::after {
+               content: "";
+@@ -678,24 +680,23 @@
+ 
+         &:not(.isDragging) > .thumbnailImageContainer::after {
+           content: attr(page-number);
+-          border-radius: 8px;
++          border-radius: 5px;
+           border: 1px solid var(--image-page-number-border-color);
+           background-color: var(--image-page-number-bg);
+           color: var(--image-page-number-fg);
+           position: absolute;
+-          bottom: 5px;
+-          inset-inline-end: 50%;
+-          min-width: 32px;
+-          height: 16px;
++          inset-inline-end: 0;
++          min-width: 12px;
++          padding: 3px;
++          margin: 4px;
+           text-align: center;
+           box-sizing: content-box;
+-          translate: calc(var(--dir-factor) * 50%);
+ 
+           font: menu;
+           font-size: 12px;
+           font-style: normal;
+           font-weight: 400;
+-          line-height: normal;
++          line-height: 1;
+ 
+           pointer-events: none;
+           user-select: none;

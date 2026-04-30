@@ -1,0 +1,75 @@
+--- a/web/viewer.html
++++ b/web/viewer.html
+@@ -1236,7 +1236,7 @@ See https://github.com/adobe-type-tools/
+           </div>
+         </dialog>
+ 
+-        <!--#if !MOZCENTRAL-->
++        <!--#if GENERIC-->
+         <dialog id="printServiceDialog" style="min-width: 200px">
+           <div class="row">
+             <span data-l10n-id="pdfjs-print-progress-message"></span>
+--- a/gulpfile.mjs
++++ b/gulpfile.mjs
+@@ -234,7 +234,7 @@ function createWebpackAlias(defines) {
+     viewerAlias["web-external_services"] = "web/chromecom.js";
+     viewerAlias["web-null_l10n"] = "web/l10n.js";
+     viewerAlias["web-preferences"] = "web/chromecom.js";
+-    viewerAlias["web-print_service"] = "web/pdf_print_service.js";
++    viewerAlias["web-print_service"] = "web/chrome_print_service.js";
+   } else if (defines.GENERIC) {
+     // Aliases defined here must also be replicated in the paths section of
+     // the tsconfig.json file for the type generation to work.
+--- /dev/null
++++ b/web/chrome_print_service.js
+@@ -0,0 +1,50 @@
++/* Copyright 2026 The Helium Authors
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++import { shadow } from "pdfjs-lib";
++
++let activeService = null;
++
++class ChromePrintService {
++  get active() {
++    return this === activeService;
++  }
++
++  layout() {}
++
++  destroy() {
++    if (!this.active) {
++      return;
++    }
++    activeService = null;
++  }
++}
++
++class PDFPrintServiceFactory {
++  static initGlobals() {}
++
++  static get supportsPrinting() {
++    return shadow(this, "supportsPrinting", true);
++  }
++
++  static createPrintService() {
++    if (activeService) {
++      throw new Error("The print service is already created and active.");
++    }
++    return (activeService = new ChromePrintService());
++  }
++}
++
++export { PDFPrintServiceFactory };

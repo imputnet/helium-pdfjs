@@ -1,0 +1,89 @@
+--- a/web/app_options.js
++++ b/web/app_options.js
+@@ -104,7 +104,7 @@ const defaultOptions = {
+   },
+   supportsIntegratedFind: {
+     /** @type {boolean} */
+-    value: false,
++    value: true,
+     kind: OptionKind.BROWSER,
+   },
+   supportsMouseWheelZoomCtrlKey: {
+@@ -211,7 +211,9 @@ const defaultOptions = {
+   },
+   enableComment: {
+     /** @type {boolean} */
+-    value: typeof PDFJSDev === "undefined",
++    value:
++      typeof PDFJSDev === "undefined" ||
++      (typeof PDFJSDev !== "undefined" && PDFJSDev.test("CHROME")),
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   enableDetailCanvas: {
+@@ -229,12 +231,14 @@ const defaultOptions = {
+     // in Firefox release, but it has to be temporary.
+     // TODO: remove it when unnecessary.
+     /** @type {boolean} */
+-    value: typeof PDFJSDev === "undefined" || PDFJSDev.test("TESTING"),
++    value:
++      typeof PDFJSDev === "undefined" || PDFJSDev.test("CHROME || TESTING"),
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   enableMerge: {
+     /** @type {boolean} */
+-    value: typeof PDFJSDev === "undefined" || PDFJSDev.test("TESTING"),
++    value:
++      typeof PDFJSDev === "undefined" || PDFJSDev.test("CHROME || TESTING"),
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   enableNewAltTextWhenAddingImage: {
+@@ -244,7 +248,7 @@ const defaultOptions = {
+   },
+   enableNewBadge: {
+     /** @type {boolean} */
+-    value: typeof PDFJSDev === "undefined" || PDFJSDev.test("MOZCENTRAL"),
++    value: false,
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   enableOptimizedPartialRendering: {
+@@ -264,17 +268,19 @@ const defaultOptions = {
+   },
+   enableScripting: {
+     /** @type {boolean} */
+-    value: typeof PDFJSDev === "undefined" || !PDFJSDev.test("CHROME"),
++    value: false,
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   enableSignatureEditor: {
+     /** @type {boolean} */
+-    value: typeof PDFJSDev === "undefined" || PDFJSDev.test("TESTING"),
++    value:
++      typeof PDFJSDev === "undefined" || PDFJSDev.test("CHROME || TESTING"),
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   enableSplitMerge: {
+     /** @type {boolean} */
+-    value: typeof PDFJSDev === "undefined" || PDFJSDev.test("TESTING"),
++    value:
++      typeof PDFJSDev === "undefined" || PDFJSDev.test("CHROME || TESTING"),
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   enableUpdatedAddImage: {
+@@ -282,7 +288,7 @@ const defaultOptions = {
+     // in Firefox release, but it has to be temporary.
+     // TODO: remove it when unnecessary.
+     /** @type {boolean} */
+-    value: false,
++    value: typeof PDFJSDev !== "undefined" && PDFJSDev.test("CHROME"),
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   externalLinkRel: {
+@@ -391,7 +397,7 @@ const defaultOptions = {
+   },
+   viewerCssTheme: {
+     /** @type {number} */
+-    value: typeof PDFJSDev !== "undefined" && PDFJSDev.test("CHROME") ? 2 : 0,
++    value: 0,
+     kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+   },
+   viewOnLoad: {

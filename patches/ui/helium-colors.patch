@@ -1,0 +1,205 @@
+--- a/web/comment_manager.css
++++ b/web/comment_manager.css
+@@ -67,11 +67,11 @@
+     color-scheme: light dark;
+     --comment-button-bg: light-dark(white, #1c1b22);
+     --comment-button-fg: light-dark(#5b5b66, #fbfbfe);
+-    --comment-button-active-bg: light-dark(#0041a4, #a6ecf4);
++    --comment-button-active-bg: light-dark(#3450d1, #90b1ff);
+     --comment-button-active-fg: light-dark(white, #15141a);
+-    --comment-button-hover-bg: light-dark(#0053cb, #61dce9);
++    --comment-button-hover-bg: light-dark(#3450d1, #90b1ff);
+     --comment-button-hover-fg: light-dark(white, #15141a);
+-    --comment-button-selected-bg: light-dark(#0062fa, #00cadb);
++    --comment-button-selected-bg: light-dark(#3450d1, #90b1ff);
+     --comment-button-border-color: light-dark(#8f8f9d, #bfbfc9);
+     --comment-button-active-border-color: var(--comment-button-active-bg);
+     --comment-button-focus-border-color: light-dark(#cfcfd8, #3a3944);
+@@ -82,7 +82,7 @@
+     --comment-button-box-shadow:
+       0 0.25px 0.75px 0 light-dark(rgb(0 0 0 / 0.05), rgb(0 0 0 / 0.2)),
+       0 2px 6px 0 light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+-    --comment-button-focus-outline-color: light-dark(#0062fa, #00cadb);
++    --comment-button-focus-outline-color: light-dark(#3450d1, #90b1ff);
+ 
+     @media screen and (forced-colors: active) {
+       --comment-button-bg: ButtonFace;
+@@ -185,19 +185,19 @@
+   --comment-active-brightness: 0.825;
+   --comment-active-filter: brightness(var(--comment-active-brightness));
+   --comment-border-color: light-dark(#f0f0f4, #52525e);
+-  --comment-focus-outline-color: light-dark(#0062fa, #00cadb);
++  --comment-focus-outline-color: light-dark(#3450d1, #90b1ff);
+   --comment-fg-color: light-dark(#15141a, #fbfbfe);
+   --comment-count-bg-color: light-dark(#e2f7ff, #00317e);
+-  --comment-indicator-active-fg-color: light-dark(#0041a4, #a6ecf4);
++  --comment-indicator-active-fg-color: light-dark(#3450d1, #90b1ff);
+   --comment-indicator-active-filter: brightness(
+     calc(1 / var(--comment-active-brightness))
+   );
+   --comment-indicator-focus-fg-color: light-dark(#5b5b66, #fbfbfe);
+-  --comment-indicator-hover-fg-color: light-dark(#0053cb, #61dce9);
++  --comment-indicator-hover-fg-color: light-dark(#3450d1, #90b1ff);
+   --comment-indicator-hover-filter: brightness(
+     calc(1 / var(--comment-hover-brightness))
+   );
+-  --comment-indicator-selected-fg-color: light-dark(#0062fa, #00cadb);
++  --comment-indicator-selected-fg-color: light-dark(#3450d1, #90b1ff);
+ 
+   --button-comment-bg: transparent;
+   --button-comment-color: var(--main-color);
+@@ -208,8 +208,8 @@
+   --button-comment-hover-bg: light-dark(#e0e0e6, #52525e);
+   --button-comment-hover-color: var(--button-comment-color);
+ 
+-  --link-fg-color: light-dark(#0060df, #0df);
+-  --link-hover-fg-color: light-dark(#0250bb, #80ebff);
++  --link-fg-color: light-dark(#3450d1, #90b1ff);
++  --link-hover-fg-color: light-dark(#3450d1, #90b1ff);
+ 
+   @media screen and (forced-colors: active) {
+     --comment-date-fg-color: CanvasText;
+--- a/web/menu.css
++++ b/web/menu.css
+@@ -41,7 +41,7 @@ button.hasPopupMenu {
+     var(--menu-text-color),
+     transparent 93%
+   );
+-  --menuitem-focus-outline-color: light-dark(#0062fa, #00cadb);
++  --menuitem-focus-outline-color: light-dark(#3450d1, #90b1ff);
+   --menuitem-focus-border-color: light-dark(white, black);
+ 
+   --menu-bg: light-dark(white, #23222b);
+--- a/web/sidebar.css
++++ b/web/sidebar.css
+@@ -30,7 +30,7 @@
+   --sidebar-width: 239px;
+   --resizer-width: 4px;
+   --resizer-shift: calc(0px - var(--resizer-width) - 2px);
+-  --resizer-hover-bg-color: light-dark(#0062fa, #00cadb);
++  --resizer-hover-bg-color: light-dark(#3450d1, #90b1ff);
+ 
+   @media screen and (forced-colors: active) {
+     --sidebar-bg-color: Canvas;
+--- a/web/views_manager.css
++++ b/web/views_manager.css
+@@ -72,7 +72,7 @@
+   --button-active-fg: var(--text-color);
+   --button-active-border-color: var(--button-border-color);
+   --button-focus-no-bg: color-mix(in srgb, var(--text-color), transparent 93%);
+-  --button-focus-outline-color: light-dark(#0062fa, #00cadb);
++  --button-focus-outline-color: light-dark(#3450d1, #90b1ff);
+   --button-focus-border-color: light-dark(white, black);
+   --status-border-color: transparent;
+   --status-actions-bg: light-dark(
+@@ -81,7 +81,7 @@
+   );
+   --status-undo-bg: light-dark(rgb(0 98 250 / 0.08), rgb(0 202 219 / 0.08));
+   --status-waiting-bg: var(--status-undo-bg);
+-  --indicator-color: light-dark(#0062fa, #00cadb);
++  --indicator-color: light-dark(#3450d1, #90b1ff);
+   --status-warning-bg: light-dark(#ffe8ea, #6e001f);
+   --indicator-warning-color: light-dark(#b20037, #ffa0aa);
+   --header-shadow:
+--- a/web/dialog.css
++++ b/web/dialog.css
+@@ -20,8 +20,8 @@
+   --text-primary-color: light-dark(#15141a, #fbfbfe);
+   --text-secondary-color: light-dark(#5b5b66, #cfcfd8);
+   --hover-filter: brightness(0.9);
+-  --link-fg-color: light-dark(#0060df, #0df);
+-  --link-hover-fg-color: light-dark(#0250bb, #80ebff);
++  --link-fg-color: light-dark(#3450d1, #90b1ff);
++  --link-hover-fg-color: light-dark(#3450d1, #90b1ff);
+   --separator-color: light-dark(#f0f0f4, #52525e);
+ 
+   --textarea-border-color: #8f8f9d;
+@@ -31,7 +31,7 @@
+   --radio-bg-color: light-dark(#f0f0f4, #2b2a33);
+   --radio-checked-bg-color: light-dark(#fbfbfe, #15141a);
+   --radio-border-color: #8f8f9d;
+-  --radio-checked-border-color: light-dark(#0060df, #0df);
++  --radio-checked-border-color: light-dark(#3450d1, #90b1ff);
+ 
+   --button-secondary-bg-color: light-dark(
+     rgb(21 20 26 / 0.07),
+@@ -57,13 +57,13 @@
+   );
+   --button-secondary-disabled-fg-color: var(--button-secondary-fg-color);
+ 
+-  --button-primary-bg-color: light-dark(#0060df, #0df);
++  --button-primary-bg-color: light-dark(#3450d1, #90b1ff);
+   --button-primary-fg-color: light-dark(#fbfbfe, #15141a);
+   --button-primary-border-color: var(--button-primary-bg-color);
+-  --button-primary-active-bg-color: light-dark(#054096, #aaf2ff);
++  --button-primary-active-bg-color: light-dark(#3450d1, #90b1ff);
+   --button-primary-active-fg-color: var(--button-primary-fg-color);
+   --button-primary-active-border-color: var(--button-primary-active-bg-color);
+-  --button-primary-hover-bg-color: light-dark(#0250bb, #80ebff);
++  --button-primary-hover-bg-color: light-dark(#3450d1, #90b1ff);
+   --button-primary-hover-fg-color: var(--button-primary-fg-color);
+   --button-primary-hover-border-color: var(--button-primary-hover-bg-color);
+   --button-primary-disabled-bg-color: var(--button-primary-bg-color);
+--- a/web/annotation_editor_layer_builder.css
++++ b/web/annotation_editor_layer_builder.css
+@@ -249,12 +249,12 @@
+     --editor-toolbar-hover-bg-color: light-dark(#e0e0e6, #52525e);
+     --editor-toolbar-hover-fg-color: var(--editor-toolbar-fg-color);
+     --editor-toolbar-hover-outline: none;
+-    --editor-toolbar-focus-outline-color: light-dark(#0060df, #0df);
++    --editor-toolbar-focus-outline-color: light-dark(#3450d1, #90b1ff);
+     --editor-toolbar-shadow: 0 2px 6px 0 rgb(58 57 68 / 0.2);
+     --editor-toolbar-height: 28px;
+     --editor-toolbar-padding: 2px;
+     --alt-text-done-color: light-dark(#2ac3a2, #54ffbd);
+-    --alt-text-warning-color: light-dark(#0090ed, #80ebff);
++    --alt-text-warning-color: light-dark(#3450d1, #90b1ff);
+     --alt-text-hover-done-color: var(--alt-text-done-color);
+     --alt-text-hover-warning-color: var(--alt-text-warning-color);
+ 
+--- a/web/message_bar.css
++++ b/web/message_bar.css
+@@ -133,7 +133,7 @@
+   --text-primary-color: light-dark(#15141a, #fbfbfe);
+ 
+   --message-bar-icon: url(images/messageBar_info.svg);
+-  --message-bar-icon-color: light-dark(#0060df, #73a7f3);
++  --message-bar-icon-color: light-dark(#3450d1, #90b1ff);
+   --message-bar-bg-color: light-dark(#deeafc, #003070);
+   --message-bar-fg-color: var(--text-primary-color);
+   --message-bar-border-color: light-dark(
+@@ -154,7 +154,7 @@
+     rgb(255 255 255 / 0.21)
+   );
+ 
+-  --undo-button-border: 1px solid light-dark(#0060df, #0df);
++  --undo-button-border: 1px solid light-dark(#3450d1, #90b1ff);
+ 
+   --undo-button-fg-color: var(--message-bar-fg-color);
+   --undo-button-fg-color-hover: var(--undo-button-fg-color);
+--- a/web/pdf_viewer.css
++++ b/web/pdf_viewer.css
+@@ -34,7 +34,7 @@
+   --page-border: 9px solid transparent;
+   --spreadHorizontalWrapped-margin-LR: -3.5px;
+   --loading-icon-delay: 400ms;
+-  --focus-ring-color: light-dark(#0060df, #0df);
++  --focus-ring-color: light-dark(#3450d1, #90b1ff);
+   --focus-ring-outline: 2px solid var(--focus-ring-color);
+   --new-badge-bg: light-dark(#070, #37b847);
+   --new-badge-color: light-dark(#fff, #15141a);
+--- a/web/toggle_button.css
++++ b/web/toggle_button.css
+@@ -14,9 +14,9 @@
+     currentColor 21%,
+     transparent
+   );
+-  --color-accent-primary: light-dark(#0060df, #0df);
+-  --color-accent-primary-hover: light-dark(#0250bb, #80ebff);
+-  --color-accent-primary-active: light-dark(#054096, #aaf2ff);
++  --color-accent-primary: light-dark(#3450d1, #90b1ff);
++  --color-accent-primary-hover: light-dark(#3450d1, #90b1ff);
++  --color-accent-primary-active: light-dark(#3450d1, #90b1ff);
+   --border-radius-circle: 9999px;
+   --border-width: 1px;
+   --size-item-small: 16px;
