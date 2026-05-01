@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Repository paths
-_root_dir="$(dirname "$(greadlink -f "$0")")"
+_script_path="${BASH_SOURCE[0]:-$0}"
+_root_dir="$(dirname "$(greadlink -f "$_script_path")")"
 _build_dir="$_root_dir/build"
 _src_dir="$_build_dir/src"
 _dist_dir="$_build_dir/chromium"

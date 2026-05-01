@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-_root_dir="$(dirname "$(greadlink -f "$0")")"
+_script_path="${BASH_SOURCE[0]:-$0}"
+_root_dir="$(dirname "$(greadlink -f "$_script_path")")"
 source "$_root_dir/env.sh"
 
 ___helium_pdfjs_require() {
